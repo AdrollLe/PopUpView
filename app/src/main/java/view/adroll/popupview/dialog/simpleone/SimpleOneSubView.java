@@ -2,7 +2,6 @@ package view.adroll.popupview.dialog.simpleone;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import view.adroll.popupview.AnimationUtil;
 import view.adroll.popupview.R;
-import view.adroll.popupview.dialog.PopUpViewDialog;
 import view.adroll.popupview.dialog.callback.PopUpViewTransferCallBack;
 
 /**
@@ -29,6 +27,8 @@ public class SimpleOneSubView extends RelativeLayout implements View.OnFocusChan
 
     // 当前所在行数
     private int row;
+    // 子view所在的位置
+    private int index;
 
     private PopUpViewTransferCallBack transferCallBack;
 
@@ -62,24 +62,12 @@ public class SimpleOneSubView extends RelativeLayout implements View.OnFocusChan
         tv.setText(text);
     }
 
-    public void setParams(PopUpViewTransferCallBack transferCallBack, int row, String text){
+    public void setParams(PopUpViewTransferCallBack transferCallBack, int row, int index, String text){
         this.transferCallBack = transferCallBack;
         this.row = row;
+        this.index = index;
 
         initData(text);
-    }
-
-    /**
-     * 首次延迟放大，否则会出现放大被截取效果
-     */
-    public void initEnlarge(){
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                onFocusChange(view, true);
-            }
-        }, PopUpViewDialog.POP_UP_ANIMATION_DURATION + 50);
     }
 
     @Override
@@ -102,6 +90,8 @@ public class SimpleOneSubView extends RelativeLayout implements View.OnFocusChan
             return true;
         } else if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DPAD_UP){
             transferCallBack.moveUp(row);
+            return true;
+        } else if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DPAD_DOWN_LEFT && index == 0){
             return true;
         }
         return false;

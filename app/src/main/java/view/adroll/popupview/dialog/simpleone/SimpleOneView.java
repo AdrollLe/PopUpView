@@ -148,10 +148,11 @@ public class SimpleOneView extends BasePopUpLayout {
     }
 
     private void initData(List<String> data){
-        for (String model : data){
+        for (int i=0; i < data.size(); i++){
+            String model = data.get(i);
             SimpleOneSubView subView = new SimpleOneSubView(getContext());
             subView.setClipChildren(false);
-            subView.setParams(transferCallBack, row, model);
+            subView.setParams(transferCallBack, row, i, model);
             llContainer.addView(subView);
         }
     }

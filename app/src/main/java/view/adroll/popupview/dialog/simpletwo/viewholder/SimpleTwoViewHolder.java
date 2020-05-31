@@ -45,6 +45,8 @@ public class SimpleTwoViewHolder extends RecyclerView.ViewHolder implements View
         } else if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
             adapter.getTransferCallBack().moveDown(adapter.getRow());
             return true;
+        }else if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DPAD_DOWN_LEFT && getAdapterPosition() == 0){
+            return true;
         }
 
         return false;

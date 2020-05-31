@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/white"
+        android:textColor="@color/color_blue"
         android:textSize="12sp"
         android:gravity="center"
         android:id="@+id/view_simple_one_sub_tv"/>

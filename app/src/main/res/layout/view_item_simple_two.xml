@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="140dp"
     android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_goneMarginTop="5dp"
     android:layout_marginStart="15dp"
     android:focusable="true"
     android:orientation="vertical"
